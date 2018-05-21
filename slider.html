@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 250px;
+      height: 10px;
+      background: rgb(223, 223, 223);
+      border-radius: 2px;
+    }
+
+    input[type="range"]#VAS::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 5px;
+      height: 20px;
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    input[type="range"]#slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 5px;
+      height: 20px;
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 1);
+    }
+
+    div {
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <title>Range Slider</title>
+  <div id="div_VAS">
+    WITHOUT initial point
+    <input id="VAS" class="none_thumb" max="10" min="0" type="range">
+  </div>
+  <div id="div_slider">
+    WITH initial point
+    <input id="slider" class="none_thumb" max="100" min="0" type="range">
+  </div>
+
+  <script>
+    var i = document.getElementById('VAS');
+
+    i.addEventListener('change', function () {
+      for (var j = 0; j < document.styleSheets[0].rules.length; j++) {
+        var rule = document.styleSheets[0].rules[j];
+        if (rule.cssText.match("VAS")) {
+          rule.style.backgroundColor = "rgba(0, 0, 0, 1)";
+        }
+      }
+    }, false);
+  </script>
+</body>
+
+</html>
