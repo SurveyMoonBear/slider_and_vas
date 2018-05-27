@@ -4,29 +4,15 @@
 <head>
   <title>Page Title</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9"
+    crossorigin="anonymous"></script>
   <style>
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 250px;
-      height: 10px;
-      background: rgb(223, 223, 223);
-      border-radius: 2px;
-    }
-
-    input[type="range"]#VAS::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 5px;
-      height: 20px;
-      border-radius: 2px;
+    .vas-unclicked::-webkit-slider-thumb {
       background: rgba(0, 0, 0, 0);
-    }
-
-    input[type="range"]#slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 5px;
-      height: 20px;
-      border-radius: 2px;
-      background: rgba(0, 0, 0, 1);
     }
 
     div {
@@ -40,24 +26,23 @@
   <title>Range Slider</title>
   <div id="div_VAS">
     WITHOUT initial point
-    <input id="VAS" class="none_thumb" max="10" min="0" type="range">
+    <form>
+      <fieldset>
+        <input id="VAS" class="custom-range vas-unclicked" max="10" min="0" type="range">
+      </fieldset>
+    </form>
+
+    <div id="vas-value"></div>
   </div>
   <div id="div_slider">
     WITH initial point
-    <input id="slider" class="none_thumb" max="100" min="0" type="range">
+    <input id="slider" class="custom-range slider" max="100" min="0" type="range">
   </div>
 
   <script>
-    var i = document.getElementById('VAS');
-
-    i.addEventListener('change', function () {
-      for (var j = 0; j < document.styleSheets[0].rules.length; j++) {
-        var rule = document.styleSheets[0].rules[j];
-        if (rule.cssText.match("VAS")) {
-          rule.style.backgroundColor = "rgba(0, 0, 0, 1)";
-        }
-      }
-    }, false);
+    $('.vas-unclicked').click(function (e) {
+      $(this).removeClass('vas-unclicked');
+    });
   </script>
 </body>
 
